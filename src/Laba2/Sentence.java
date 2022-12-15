@@ -25,7 +25,7 @@ final public class Sentence{
         this.line = givenObject.getLine();
     }
     //a.	Отсортируйте слова в предложении по длине слов, если слов с одинаковой длины несколько, то по алфавиту
-    public String setRandomSentence(int size) {
+    private String setRandomSentence(int size) {
 
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'
@@ -43,7 +43,7 @@ final public class Sentence{
         List<String> words = Arrays.asList((this.line.replaceAll("\\W", " ")).split("\\s+"));
         return words;
     }
-    private List<String> sorting(List<String> words){
+    private List<String> delWords(List<String> words){
         for (String word : words) {
             if ((word.substring(0, 1).toLowerCase()).equals(word.substring(word.length() - 1).toLowerCase())) {
                 words.set(words.indexOf(word), ""); //удаляем это слово
@@ -78,7 +78,7 @@ final public class Sentence{
     }
     public void delFirstAndLast(){
         List<String> words = transformWords(this.line);
-        sorting(words);
+        delWords(words);
         replaceDel(words);
         System.out.println(String.format("До: %s\nПосле: %s", this.line, this.output +"\n"));
     }

@@ -4,51 +4,77 @@ import java.util.stream.Stream;
 
 final public class TwoArrays {
     private int[][] array;
-    private int length;
+    private int len;
     private int width;
-    public TwoArrays (int length, int width) {
-        this.length = length;
-        this.width = width;
-        this.array = new int[this.length][this.width];
+    public TwoArrays (int row, int collumn) {
+        this.len = row;
+        this.width = collumn;
+        this.array = new int[len][width];
     }
-    public void setArray(int[][] array) {
-        this.array = Arrays.copyOf(array, array.length);
-        this.length = array.length;
-    }
-    public int[][] getArray() {return this.array;}
+//    public TwoArrays(int size){
+//        this.len = size;
+//        this.width = size;
+//        this.array = new int[len][width];
+//    }
     public TwoArrays() {
         this(3,3);
+        this.array = new int[len][width];
         this.setRandom();
     }
-    public TwoArrays(int[][] array) {this.setArray(array);}
-    public TwoArrays(TwoArrays givenObject) {
-
-        this.length = givenObject.length;
-        this.width = givenObject.width;
-        this.array = new int[this.length][this.width];
-        fillArray();
+    public TwoArrays(int[][] array) {
+        this.len = array.length;
+        this.width = array.length;
+        this.array = new int[array.length][array.length];
+        setArray(array);
     }
-    public void setRandom() {
+
+    public TwoArrays(int readChoice) {
+        this.len = readChoice;
+        System.out.println("Введите высоту массива: ");
+        this.width = Menu.readChoice();
+        this.array = new int[len][width];
+    }
+
+    public void setArray(int[][] array) {
+        for(int i = 0; i < len; ++i){
+            for(int j = 0; j < width; ++j){
+                this.array[i][j] = array[i][j];
+            }
+        }
+    }
+    public int[][] getArray() {
+        return this.array;
+    }
+   public TwoArrays(TwoArrays givenObject) {
+
+       this.len = givenObject.len;
+       this.width = givenObject.width;
+       this.array = new int[len][width];
+       fillArray();
+   }
+    private void setRandom() {
         Random r = new Random();
-        for (int i = 0; i < this.length; i++) {
-            for(int j = 0; j < this.width; j++) {
+        for (int i = 0; i < this.array.length; i++) {
+            for(int j = 0; j < this.array[i].length; j++) {
                 this.array[i][j] = r.nextInt(11) - 5;
             }
         }
     }
     public void fillArray() {
         Scanner in = new Scanner(System.in);
-        for (int i = 0; i < this.length; i++) {
-            for(int j = 0; j < this.width; j++) {
+        for (int i = 0; i < this.len; ++i) {
+            for(int j = 0; j < this.width; ++j) {
                 System.out.print("[" + (i + 1) + "]" +"[" + (j + 1) + "]" + " элемент = ");
                 this.array[i][j] = in.nextInt();
             }
         }
     }
     public void printArray() {
-        for (int i = 0; i < this.length; i++) {
-            for (int j = 0; j < this.width; j++)
-            System.out.print("["+(i+1)+"]"+"["+(j+1)+"]"+" элемент = " + array[i][j] + "\n");
+        for (int i = 0; i < this.len; i++) {
+            for (int j = 0; j < this.width; j++) {
+                System.out.print("[" + (i + 1) + "]" + "[" + (j + 1) + "]" + " элемент = " + array[i][j] + "\t");
+            }
+            System.out.println();
         }
     }
     public void averageOccurrOfInteger()
