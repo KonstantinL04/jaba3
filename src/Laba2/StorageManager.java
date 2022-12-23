@@ -1,7 +1,5 @@
 package Laba2;
-
 import java.io.*;
-
 public class StorageManager {
     static StorageManager shared = new StorageManager();
     public int[][] arrayFromFile(String fileName) {
@@ -31,7 +29,6 @@ public class StorageManager {
                 }
             }
             System.out.println("Успешно сохранено в  файл:" + fileName);
-
         } catch (FileNotFoundException e) {
             System.out.println("Некорректное имя файла");
         } catch (IOException e) {

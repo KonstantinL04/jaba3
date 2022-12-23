@@ -50,7 +50,7 @@ final public class TwoArrays {
        this.len = givenObject.len;
        this.width = givenObject.width;
        this.array = new int[len][width];
-       fillArray();
+   //    fillArray();
    }
     private void setRandom() {
         Random r = new Random();
@@ -61,11 +61,11 @@ final public class TwoArrays {
         }
     }
     public void fillArray() {
-        Scanner in = new Scanner(System.in);
+   //     Scanner in = new Scanner(System.in);
         for (int i = 0; i < this.len; ++i) {
             for(int j = 0; j < this.width; ++j) {
                 System.out.print("[" + (i + 1) + "]" +"[" + (j + 1) + "]" + " элемент = ");
-                this.array[i][j] = in.nextInt();
+                this.array[i][j] = Menu.readChoice();
             }
         }
     }
